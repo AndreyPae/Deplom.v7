@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% extends 'base.html' %}
+
+{% block content %}
+  <h1>Order #{{ order.id }}</h1>
+  <p>User: {{ order.user.username }}</p>
+  <p>Total Price: {{ order.total_price }}</p>
+  <p>Created At: {{ order.created_at }}</p>
+  <ul>
+    {% for order_item in order.orderitem_set.all %}
+      <li>{{ order_item.product.name }} - {{ order_item.quantity }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+</body>
+</html>

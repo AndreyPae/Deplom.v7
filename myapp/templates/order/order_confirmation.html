@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block content %}
+  <h1>Order confirmation</h1>
+  <p>Thank you for your order!</p>
+  <p>Order number: {{ order.id }}</p>
+  <p>Delivery method: {{ order.delivery_method }}</p>
+  <p>Total price: {{ order.items.all|aggregate(Sum('product__price')).get('product__price__sum') }}</p>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ product.name }}</h1>
+  <p>{{ product.description }}</p>
+  <p>Price: {{ product.price }}</p>
+  <p>Categories: {{ product.categories.all|join:', ' }}</p>
+  <a href="{% url 'product_update' product.id %}">Edit</a>
+  <a href="{% url 'product_delete' product.id %}">Delete</a>
+{% endblock %}
+</body>
+</html>

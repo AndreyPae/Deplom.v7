@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block content %}
+  <h1>Cart</h1>
+  <ul>
+    {% for cart_item in cart_items %}
+      <li>
+        {{ cart_item.quantity }} x {{ cart_item.product.name }}
+        <a href="{% url 'cart_update' cart_item.id %}">Edit</a>
+        <a href="{% url 'cart_delete' cart_item.id %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'product_list' %}">Continue Shopping</a>
+{% endblock %}
+</body>
+</html>

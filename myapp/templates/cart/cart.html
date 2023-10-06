@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Корзина</h1>
+  <ul>
+    {% for cart_item in cart_items %}
+      <li>
+        {{ cart_item.product.name }} - {{ cart_item.product.price }} x {{ cart_item.quantity }}
+      </li>
+    {% endfor %}
+  </ul>
+  <p>Итоговая цена: {{ cart.total_price }}</p>
+  <a href="{% url 'checkout' %}">Проверка</a>
+{% endblock %}
+</body>
+</html>
